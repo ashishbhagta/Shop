@@ -1,16 +1,16 @@
 package com.DCMetal.Shop.service;
 
 import com.DCMetal.Shop.model.Category;
-
-import java.util.List;
+import com.DCMetal.Shop.payload.CategoryDTO;
+import com.DCMetal.Shop.payload.CategoryResponse;
 
 public interface CategoryService
 {
-    List<Category> getAllCategories();
+    CategoryResponse getAllCategories();
 
-    void createCategory(Category category);
+    CategoryDTO createCategory(CategoryDTO categoryDTO);
 
     String deleteCategory(Long categoryID);
 
-    Category updateCategory(Category category, Long categoryId);
+    CategoryDTO updateCategory(CategoryDTO categoryDTO, Long categoryId);
 }
