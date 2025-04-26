@@ -14,8 +14,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @Table(name = "products")
 @ToString
-public class Product
-{
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long productId;
@@ -33,7 +32,7 @@ public class Product
     private double specialPrice;
 
     @ManyToOne
-    @JoinColumn(name="category_id")
+    @JoinColumn(name = "category_id")
     private Category category;
 
     @ManyToOne

@@ -17,8 +17,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class CategoryServiceImpl implements CategoryService
-{
+public class CategoryServiceImpl implements CategoryService {
     @Autowired
     private CategoryRepository categoryRepository;
 
@@ -26,8 +25,7 @@ public class CategoryServiceImpl implements CategoryService
     private ModelMapper modelMapper;
 
     @Override
-    public CategoryResponse getAllCategories(Integer pageNumber, Integer pageSize, String sortBy, String sortOrder)
-    {
+    public CategoryResponse getAllCategories(Integer pageNumber, Integer pageSize, String sortBy, String sortOrder) {
         Sort sortByAndOrder = sortOrder.equalsIgnoreCase("asc")
                 ? Sort.by(sortBy).ascending()
                 : Sort.by(sortBy).descending();
@@ -35,8 +33,8 @@ public class CategoryServiceImpl implements CategoryService
         Pageable pageDetails = PageRequest.of(pageNumber, pageSize, sortByAndOrder);
         Page<Category> categoryPage = categoryRepository.findAll(pageDetails);
         List<Category> categories = categoryPage.getContent();
-        if(categories.isEmpty())
-            throw  new APIException("Category List is empty");
+        if (categories.isEmpty())
+            throw new APIException("Category List is empty");
         List<CategoryDTO> categoryDTOS = categories.stream()
                 .map(category -> modelMapper.map(category, CategoryDTO.class))
                 .toList();
@@ -51,37 +49,34 @@ public class CategoryServiceImpl implements CategoryService
     }
 
     @Override
-    public CategoryDTO createCategory(CategoryDTO categoryDTO)
-    {
+    public CategoryDTO createCategory(CategoryDTO categoryDTO) {
         Category category = modelMapper.map(categoryDTO, Category.class);
         Category savedCategory = categoryRepository.findByCategoryName(category.getCategoryName());
-        if(savedCategory != null)
-            throw  new APIException("Category with the name "+category.getCategoryName()+" already exists");
+        if (savedCategory != null)
+            throw new APIException("Category with the name " + category.getCategoryName() + " already exists");
         Category createCategory = categoryRepository.save(category);
         return modelMapper.map(createCategory, CategoryDTO.class);
     }
 
     @Override
-    public CategoryDTO deleteCategory(Long categoryID)
-    {
+    public CategoryDTO deleteCategory(Long categoryID) {
         Category category = categoryRepository.findById(categoryID)
-                .orElseThrow(() -> new ResourceNotFoundException("Category","categoryID",categoryID));
+                .orElseThrow(() -> new ResourceNotFoundException("Category", "categoryID", categoryID));
 
         categoryRepository.delete(category);
         return modelMapper.map(category, CategoryDTO.class);
     }
 
     @Override
-    public CategoryDTO updateCategory(CategoryDTO categoryDTO, Long categoryID)
-    {
+    public CategoryDTO updateCategory(CategoryDTO categoryDTO, Long categoryID) {
         Category category = modelMapper.map(categoryDTO, Category.class);
         Category savedCategory = categoryRepository.findByCategoryName(category.getCategoryName());
-        if(savedCategory != null)
-            throw  new APIException("Category with the name "+savedCategory.getCategoryName()+" already exists with id "+savedCategory.getCategoryId());
+        if (savedCategory != null)
+            throw new APIException("Category with the name " + savedCategory.getCategoryName() + " already exists with id " + savedCategory.getCategoryId());
         Category updatedCategory = categoryRepository.findById(categoryID)
-                .orElseThrow(()-> new ResourceNotFoundException("Category","categoryID",categoryID));
+                .orElseThrow(() -> new ResourceNotFoundException("Category", "categoryID", categoryID));
         category.setCategoryId(categoryID);
-        updatedCategory=categoryRepository.save(category);
+        updatedCategory = categoryRepository.save(category);
         return modelMapper.map(updatedCategory, CategoryDTO.class);
     }
 }
