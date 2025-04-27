@@ -4,15 +4,15 @@ import java.util.List;
 
 public class UserInfoResponse {
     private Long id;
-    private String jwtToken;
+    private String jwtCookie;
     private String username;
     private List<String> roles;
 
-    public UserInfoResponse(Long id, String username, List<String> roles, String jwtToken) {
+    public UserInfoResponse(Long id, String username, List<String> roles, String jwtCookie) {
         this.id = id;
         this.username = username;
         this.roles = roles;
-        this.jwtToken = jwtToken;
+        this.jwtCookie = jwtCookie;
     }
 
     public UserInfoResponse(Long id, String username, List<String> roles) {
@@ -29,12 +29,12 @@ public class UserInfoResponse {
         this.id = id;
     }
 
-    public String getJwtToken() {
-        return jwtToken;
+    public String getJwtCookie() {
+        return jwtCookie;
     }
 
     public void setJwtToken(String jwtToken) {
-        this.jwtToken = jwtToken;
+        this.jwtCookie = jwtToken;
     }
 
     public String getUsername() {
