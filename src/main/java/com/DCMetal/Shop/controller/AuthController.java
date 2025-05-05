@@ -158,7 +158,12 @@ public String currentUserName(Authentication authentication)
         UserInfoResponse response = new UserInfoResponse(userDetails.getId(),userDetails.getUsername(), roles);
 
         return ResponseEntity.ok().body(response);
-
     }
 
+    @PostMapping("/signout")
+    public ResponseEntity<?> signoutUser(Authentication authentication)
+    {
+        ResponseCookie jwtCookie= jwtUtils.getCleanJwtCookie();
+        return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, jwtCookie.toString()).body(new MessageResponse("Signed out successfully"));
+    }
 }
