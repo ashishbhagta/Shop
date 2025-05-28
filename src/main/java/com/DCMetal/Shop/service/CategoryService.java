@@ -1,7 +1,7 @@
 package com.DCMetal.Shop.service;
 
-import com.DCMetal.Shop.payload.CategoryDTO;
-import com.DCMetal.Shop.payload.CategoryResponse;
+import com.DCMetal.Shop.DTO.CategoryDTO;
+import com.DCMetal.Shop.DTO.CategoryResponse;
 
 public interface CategoryService {
     CategoryResponse getAllCategories(Integer pageNumber, Integer pageSize, String sortBy, String sortOrder);

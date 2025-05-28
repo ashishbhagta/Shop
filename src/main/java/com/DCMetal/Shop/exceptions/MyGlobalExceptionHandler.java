@@ -1,7 +1,7 @@
 package com.DCMetal.Shop.exceptions;
 
 
-import com.DCMetal.Shop.payload.APIResponse;
+import com.DCMetal.Shop.DTO.APIResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;

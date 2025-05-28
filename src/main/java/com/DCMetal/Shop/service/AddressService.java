@@ -1,7 +1,7 @@
 package com.DCMetal.Shop.service;
 
 import com.DCMetal.Shop.model.User;
-import com.DCMetal.Shop.payload.AddressDTO;
+import com.DCMetal.Shop.DTO.AddressDTO;
 
 import java.util.List;
 

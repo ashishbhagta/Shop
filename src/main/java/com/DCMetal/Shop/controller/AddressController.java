@@ -2,7 +2,7 @@ package com.DCMetal.Shop.controller;
 
 
 import com.DCMetal.Shop.model.User;
-import com.DCMetal.Shop.payload.AddressDTO;
+import com.DCMetal.Shop.DTO.AddressDTO;
 import com.DCMetal.Shop.repositories.AddressRepository;
 import com.DCMetal.Shop.service.AddressService;
 import com.DCMetal.Shop.util.AuthUtil;

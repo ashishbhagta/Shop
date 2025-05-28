@@ -1,7 +1,7 @@
 package com.DCMetal.Shop.controller;
 
 import com.DCMetal.Shop.model.Cart;
-import com.DCMetal.Shop.payload.CartDTO;
+import com.DCMetal.Shop.DTO.CartDTO;
 import com.DCMetal.Shop.repositories.CartRepository;
 import com.DCMetal.Shop.service.CartService;
 import com.DCMetal.Shop.util.AuthUtil;

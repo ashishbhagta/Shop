@@ -4,16 +4,13 @@ import com.DCMetal.Shop.exceptions.APIException;
 import com.DCMetal.Shop.exceptions.ResourceNotFoundException;
 import com.DCMetal.Shop.model.Address;
 import com.DCMetal.Shop.model.User;
-import com.DCMetal.Shop.payload.AddressDTO;
+import com.DCMetal.Shop.DTO.AddressDTO;
 import com.DCMetal.Shop.repositories.AddressRepository;
 import com.DCMetal.Shop.repositories.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 

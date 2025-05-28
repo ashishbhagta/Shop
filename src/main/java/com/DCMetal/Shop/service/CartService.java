@@ -1,7 +1,6 @@
 package com.DCMetal.Shop.service;
 
-import com.DCMetal.Shop.payload.CartDTO;
-import org.springframework.stereotype.Service;
+import com.DCMetal.Shop.DTO.CartDTO;
 
 import java.util.List;
 

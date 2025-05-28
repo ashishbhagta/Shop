@@ -5,8 +5,8 @@ import com.DCMetal.Shop.exceptions.ResourceNotFoundException;
 import com.DCMetal.Shop.model.Cart;
 import com.DCMetal.Shop.model.CartItem;
 import com.DCMetal.Shop.model.Product;
-import com.DCMetal.Shop.payload.CartDTO;
-import com.DCMetal.Shop.payload.ProductDTO;
+import com.DCMetal.Shop.DTO.CartDTO;
+import com.DCMetal.Shop.DTO.ProductDTO;
 import com.DCMetal.Shop.repositories.CartItemRepository;
 import com.DCMetal.Shop.repositories.CartRepository;
 import com.DCMetal.Shop.repositories.ProductRepository;
@@ -115,8 +115,15 @@ public class CartServiceImpl implements CartService
         List<CartDTO> cartDTOS= carts.stream().map(cart ->{
             CartDTO cartDTO=modelMapper.map(cart, CartDTO.class);
 
-            List<ProductDTO> products=cart.getCartItems().stream()
-                    .map(p->modelMapper.map(p.getProduct(),ProductDTO.class)).collect(Collectors.toList());
+//            List<ProductDTO> products=cart.getCartItems().stream()
+//                    .map(p->modelMapper.map(p.getProduct(),ProductDTO.class)).collect(Collectors.toList());
+            List <ProductDTO> products=cart.getCartItems().stream().map(cartItem ->
+            {
+                ProductDTO productDTO=modelMapper.map(cartItem.getProduct(),ProductDTO.class);
+                productDTO.setQuantity(cartItem.getQuantity());
+                return productDTO;
+
+            }).collect(Collectors.toList());
 
             cartDTO.setProducts(products);
             return cartDTO;

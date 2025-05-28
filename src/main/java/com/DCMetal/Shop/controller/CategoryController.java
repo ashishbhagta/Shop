@@ -1,8 +1,8 @@
 package com.DCMetal.Shop.controller;
 
 import com.DCMetal.Shop.config.AppConstants;
-import com.DCMetal.Shop.payload.CategoryDTO;
-import com.DCMetal.Shop.payload.CategoryResponse;
+import com.DCMetal.Shop.DTO.CategoryDTO;
+import com.DCMetal.Shop.DTO.CategoryResponse;
 import com.DCMetal.Shop.service.CategoryService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

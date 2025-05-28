@@ -1,4 +1,4 @@
-package com.DCMetal.Shop.payload;
+package com.DCMetal.Shop.DTO;
 
 
 import lombok.AllArgsConstructor;
